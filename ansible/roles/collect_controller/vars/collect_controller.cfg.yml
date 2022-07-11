@@ -1,0 +1,41 @@
+# File Path
+collect_controller_cfg: /opt/smc/sensor/conf/collect_controller.cfg
+collect_controller_cfg_yml: /etc/ansible/roles/collect_controller/vars/collect_controller.cfg.yml
+
+CompName: CollectController
+CompFlag: 26592b12-a544-4770-9bae-105081fcb4e8
+LocalAddr: '{{ IPADDR }}'
+#windows下使用
+NetSegment:
+
+#数据监听端口
+DataListenPort: 14001
+#控制监听端口
+CmdListenPort: 14002
+
+#DataAnalyser所在地址
+DataServer: '{{ IPADDR }}'
+#DataAnalyser所监听的数据端口
+DataPort: 13001
+
+#BusinessManager所在地址
+ControlServer: '{{ IPADDR }}'
+#BusinessManager所监听的控制端口
+ControlPort: 13002
+
+#日志配置
+LogMask: 3
+#单个日志文件最大限制，单位M
+MaxLogFileSize: 10
+LogQueueMask: 3
+
+#证书配置，证书路径结尾必须带/
+SSL: false
+SSLPath: /opt/smc/cert/
+SSLCaFile: ca.pem
+SSLKeyFile: key.pem
+SSLPasswd: AgICrvT4QgQFHAQXnwYHCA==
+
+#监控框架类型,0:monitor 1:urm
+MonitorType: 0
+DBPassword: AgIChXFFkC1EDjYEBdUla8yFsTW4BgcI

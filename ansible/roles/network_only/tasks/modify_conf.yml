@@ -1,0 +1,31 @@
+# modify ipaddr 
+- name: modify network config
+  nmcli:
+    conn_name: "{{ ifname }}"
+    ifname: "{{ ifname }}"
+    type: ethernet
+    ip4: "{{ip}}"
+    state: present
+  notify: restart network
+
+- name: prefix to netmask
+  lineinfile:
+    path: "/etc/sysconfig/network-scripts/ifcfg-{{ ifname }}"
+    regexp: "^PREFIX"
+    line: "PREFIX={{ netmask }}"
+    #backrefs: yes
+  notify:
+    - restart network
+    - restart network1
+    - restart network2
+
+# modify /etc/ansible/hosts
+- name: modify /etc/ansible/hosts
+  lineinfile:
+    path: "/etc/ansible/hosts"
+    regexp: "IPADDR"
+    line: "IPADDR={{ IPADDR }}"
+    backrefs: yes
+  tags: ansible_hosts
+  ignore_errors: True
+

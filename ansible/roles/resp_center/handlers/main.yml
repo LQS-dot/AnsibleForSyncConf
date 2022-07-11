@@ -1,0 +1,6 @@
+---
+- name: restart smckernel
+  service:
+    name: smcresp_center 
+    state: restarted
+  when: restart == true

@@ -1,0 +1,21 @@
+# modify management
+- name: modify conf
+  lineinfile:
+    path: "{{ management_yml }}"
+    regexp: "^{{ key }}"
+    line: "{{ key }}: {{ value }}"
+    backrefs: yes
+  tags: management
+  register: management
+  when: key != "temp_k"
+
+# modify default
+- name: modify conf
+  lineinfile:
+    path: "{{ default_yml }}"
+    regexp: "^{{ key }}"
+    line: "{{ key }}: {{ value }}"
+    backrefs: yes
+  tags: default
+  when: key != "temp_k"
+

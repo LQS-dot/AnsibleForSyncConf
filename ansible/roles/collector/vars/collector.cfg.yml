@@ -1,0 +1,57 @@
+# File Path
+collector_cfg: /opt/smc/sensor/conf/collector.cfg
+collector_cfg_yml: /etc/ansible/roles/collector/vars/collector.cfg.yml
+
+CompName: Collector
+CompFlag: 
+LocalAddr: "{{ IPADDR }}"
+#采集控制器数据端口
+DataPort: 14001
+#采集控制器命令端口
+CmdPort: 14002
+#日志配置
+LogMask: 3
+#单个日志文件最大限制，单位M
+MaxLogFileSize: 10
+LogQueueMask: 3
+
+#SMB用户定义文件名
+SMB_INCEPT_FILE: share_file
+#syslog接入端口
+SYSLOG_PORT: 514
+#原始事件落地配置
+DUMP_UNKNOWN: 0
+DO_DUMP: 0
+DUMP_IP: 
+DUMP_COUNT: 1000
+DUMP_PAUSE: 0
+
+#数据负载均衡
+OWN_BALANCE: 
+BALANCE_CLIENT: 
+#性能超载转通用事件
+OUTLOAD_EVT: 0
+#智能排序开关
+PATTERNSORT: 0
+#智能排序学习时间
+FIRST_LEARNING: 30
+#智能排序刷新周期
+PATTERN_SORT_PERIOD: 30
+#解析线程数
+PARSE_THREADS: 4
+#过滤线程数
+FM_POOL: 1
+#kafka速率控制
+KAFKA_SLEEP_US: 500
+
+SSL: false
+SSLPath: /opt/smc/cert/
+SSLCaFile: ca.pem
+SSLKeyFile: key.pem
+SSLPasswd: AgICrvT4QgQFHAQXnwYHCA==
+
+
+INCEPT_THREADS: 1
+
+#监控框架类型,0:monitor 1:urm
+MonitorType: 0

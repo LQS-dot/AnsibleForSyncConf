@@ -1,0 +1,6 @@
+---
+- name: restart smcem
+  service:
+    name: smceventmonitor
+    state: restarted
+  when: restart == true

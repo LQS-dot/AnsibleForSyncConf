@@ -1,0 +1,35 @@
+CompName={{CompName}}
+CompFlag={{CompFlag}}
+LocalAddr={{LocalAddr}}
+CLIENT={{CLIENT}}
+DATA_PATH={{DATA_PATH}}
+PORT={{PORT}}
+KEEP_DAYS={{KEEP_DAYS}}
+
+#BDLOG版数据分析器地址中转心跳数据
+AnalyzerIP={{AnalyzerIP}}
+AnalyzerPort={{AnalyzerPort}}
+
+#日志配置
+LogMask={{LogMask}}
+MaxLogFileSize={{MaxLogFileSize}}
+LogQueueMask={{LogQueueMask}}
+
+#证书配置，证书路径结尾必须带/
+{% if SSL %}
+SSL=true
+{% else %}
+SSL=false
+{% endif %}
+SSLPath={{SSLPath}}
+SSLCaFile={{SSLCaFile}}
+SSLKeyFile={{SSLKeyFile}}
+SSLPasswd={{SSLPasswd}}
+
+INIT_FLAG={{INIT_FLAG}}
+LOG_BACKUP={{LOG_BACKUP}}
+
+StoreType={{StoreType}}
+
+#监控框架类型,0:monitor 1:urm
+MonitorType={{MonitorType}}

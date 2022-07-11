@@ -1,0 +1,9 @@
+# data_analyser.cfg conf
+- name: data_analyser.cfg conf
+  template:
+    src: data_analyser.cfg.j2
+    dest: '{{ data_analyser_cfg }}'
+    owner: smc
+  tags: data_analyser
+  notify: restart smckernel
+

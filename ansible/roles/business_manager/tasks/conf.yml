@@ -1,0 +1,9 @@
+# business_manager.cfg conf
+- name: business_manager.cfg conf
+  template:
+    src: business_manager.cfg.j2 
+    dest: '{{ business_manager_cfg }}'
+    owner: smc
+  tags: business_manager
+  notify: restart smckernel
+

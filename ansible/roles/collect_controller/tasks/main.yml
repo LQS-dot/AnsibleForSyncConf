@@ -1,0 +1,4 @@
+- include_vars: ../vars/collect_controller.cfg.yml
+  tags: collect_controller
+- import_tasks: modify_conf.yml
+- import_tasks: conf.yml 

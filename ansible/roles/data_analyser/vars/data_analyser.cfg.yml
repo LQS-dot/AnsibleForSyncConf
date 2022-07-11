@@ -1,0 +1,47 @@
+# File Path
+data_analyser_cfg: /opt/smc/kernel/conf/data_analyser.cfg
+data_analyser_cfg_yml: /etc/ansible/roles/data_analyser/vars/data_analyser.cfg.yml
+
+CompName: DataAnalyser
+CompFlag: ea445cf1-c9c4-4437-b8c2-949ec395761e
+LocalAddr: '{{ IPADDR }}'
+
+#日志配置
+LogMask: 3
+#单个日志文件大小，单位M
+MaxLogFileSize: 10
+LogQueueMask: 3
+
+#数据监听端口
+ListenPort: 13001
+
+#文件存储服务器
+FileStoreServer: 127.0.0.1
+FileStorePort: 17001
+
+#证书配置，证书路径结尾必须带/
+SSL: false
+SSLPath: /opt/smc/cert/
+SSLCaFile: ca.pem
+SSLKeyFile: key.pem
+SSLPasswd: AgICrvT4QgQFHAQXnwYHCA==
+
+#Master地址
+MasterAddr: '{{ IPADDR }}'
+
+#总线配置
+MQServer: '{{ IPADDR }}'
+MQPort: 61616
+
+#威胁情报分数级别
+ThreatServerity: '[0-60]^1,[60-80]^2,[80-100]^3'
+
+RECEIVER_THREADS: 1
+POOL_SIZE: 1
+WORK_POOL_THREADS: 1
+STAT_POOL_THREADS: 4
+POLICY_POOLS: 4
+STAT_DROP: 1
+
+#监控框架类型,0:monitor 1:urm
+MonitorType: 0

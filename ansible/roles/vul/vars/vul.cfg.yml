@@ -1,0 +1,8 @@
+# File Path
+vul_cfg: /etc/sysconfig/vul.cfg
+vul_cfg_yml: /etc/ansible/roles/vul/vars/vul.cfg.yml
+
+host: "{{ IPADDR }}"
+port: 9390
+username: admin
+password: admin

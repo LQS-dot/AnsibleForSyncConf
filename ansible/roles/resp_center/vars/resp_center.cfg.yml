@@ -1,0 +1,29 @@
+# File Path
+resp_center_cfg: /opt/smc/kernel/conf/resp_center.cfg
+resp_center_cfg_yml: /etc/ansible/roles/resp_center/vars/resp_center.cfg.yml
+
+CompName: RespCenter
+CompFlag: 5ff89cbd-6934-456c-b8fa-1107d59c1bb8
+LocalAddr: '{{ IPADDR }}'
+
+#日志配置
+LogMask: 3
+#单个日志文件最大限制，单位M
+MaxLogFileSize: 10
+LogQueueMask: 3
+
+#外部命令所在目录
+ProgramDir: /opt/smc/program
+
+#证书配置，证书路径结尾必须带/
+SSLPath: /opt/smc/cert/
+SSLCaFile: ca.pem
+SSLKeyFile: key.pem
+SSLPasswd: AgICrvT4QgQFHAQXnwYHCA==
+
+#总线配置
+MQServer: '{{ IPADDR }}'
+MQPort: 61616
+
+#监控框架类型,0:monitor 1:urm
+MonitorType: 0

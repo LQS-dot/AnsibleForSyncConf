@@ -1,0 +1,6 @@
+- include_vars: ../vars/default.yml
+  tags: default
+- include_vars: ../vars/management.yml
+  tags: management
+- import_tasks: modify_conf.yml
+- import_tasks: conf.yml 

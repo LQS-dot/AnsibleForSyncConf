@@ -1,0 +1,32 @@
+---
+ # hosts -> localhost
+ - hosts: localhost
+   connection: local
+   gather_facts: no 
+   # vars before tasks
+   vars:
+     - key: "{{k}}"
+     - value: "{{v}}"
+
+   # init before main tasks
+   pre_tasks:
+     - name: null -> set fact
+       set_fact:
+         key: "temp_k"
+         value: "temp_v"
+       when: k is not defined
+
+     - name: set fact
+       set_fact:
+         "restart": true
+       tags: always
+
+     - name: set fact
+       set_fact:
+         "{{key}}": "{{value}}"
+       ignore_errors: True
+       tags: always
+
+   roles:
+     - { role: "{{ role }}" }
+

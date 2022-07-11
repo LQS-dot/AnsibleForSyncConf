@@ -1,0 +1,54 @@
+CompName={{CompName}}
+CompFlag={{CompFlag}}
+LocalAddr={{LocalAddr}}
+
+#日志配置
+LogMask={{LogMask}}
+#单个日志文件大小，单位M
+MaxLogFileSize={{MaxLogFileSize}}
+LogQueueMask={{LogQueueMask}}
+
+#数据监听端口
+ListenPort={{ListenPort}}
+
+#文件存储服务器
+FileStoreServer={{FileStoreServer}}
+FileStorePort={{FileStorePort}}
+
+#证书配置，证书路径结尾必须带/
+{% if SSL %}
+SSL=true
+{% else %}
+SSL=false
+{% endif %}
+
+{% if SSL %}
+SSLStore=true
+{% else %}
+SSLStore=false
+{% endif %}
+
+SSLPath={{SSLPath}}
+SSLCaFile={{SSLCaFile}}
+SSLKeyFile={{SSLKeyFile}}
+SSLPasswd={{SSLPasswd}}
+
+#Master地址
+MasterAddr={{MasterAddr}}
+
+#总线配置
+MQServer={{MQServer}}
+MQPort={{MQPort}}
+
+#威胁情报分数级别
+ThreatServerity={{ThreatServerity}}
+
+RECEIVER_THREADS={{RECEIVER_THREADS}}
+POOL_SIZE={{POOL_SIZE}}
+WORK_POOL_THREADS={{WORK_POOL_THREADS}}
+STAT_POOL_THREADS={{STAT_POOL_THREADS}}
+POLICY_POOLS={{POLICY_POOLS}}
+STAT_DROP={{STAT_DROP}}
+
+#监控框架类型,0:monitor 1:urm
+MonitorType={{MonitorType}}

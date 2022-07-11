@@ -1,0 +1,9 @@
+# web conf
+- name: web conf
+  template:
+    src: application.j2
+    dest: "{{ app_properties }}"
+    owner: smc
+  tags: web
+  notify: restart smcweb
+

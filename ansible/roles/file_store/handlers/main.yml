@@ -1,0 +1,6 @@
+---
+- name: restart smcfilestore
+  service:
+    name: smcfilestore
+    state: restarted
+  when: restart == true

@@ -1,0 +1,21 @@
+#es的主机地址，集群时填写所有的主机地址，以英文逗号分隔
+es.host={{es_host}}
+#es的服务端口，默认9300
+es.port={{es_port}}
+#es的集群名称
+es.cluster.name={{es_cluster_name}}
+#单线程批次提交的事件数量
+es.bulkActions={{es_bulkActions}}
+#当提交的事件大小达到配置时，触发服务器的flush操作，与下面的刷新时间同时起作用，谁先满足谁触发，单位：MB
+es.bulkSize={{es_bulkSize}}
+#当时间间隔达到配置时，触发服务器的fulsh操作，单位：秒
+es.flushInterval={{es_flushInterval}}
+#提交事件的线程数
+es.concurrentRequests={{es_concurrentRequests}}
+#保持最近多少天的索引库始终处于开启状态
+es.holdOpenIndexSize={{es_holdOpenIndexSize}}
+#索引库的备份因子数量
+es.index.number_of_replicas={{es_index_number_of_replicas}}
+log.baseDir={{log_baseDir}}
+# 数据字典配置文件路径
+dictionary.config.path={{dictionary_config_path}}

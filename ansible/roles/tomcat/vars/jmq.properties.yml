@@ -1,0 +1,26 @@
+# File Path
+jmq_properties: /opt/smc/web/tomcat/webapps/SMC/WEB-INF/classes/config/jmq/jmq.properties
+jmq_properties_yml: /etc/ansible/roles/tomcat/vars/jmq.properties.yml
+#总线服务器IP
+ACTIVEMQ_SERVER_IP: '{{ IPADDR }}'
+#总线服务器端口
+ACTIVEMQ_SERVER_PORT: 61616
+#ACTIVEMQ_LOCAL_PORT = 0
+#总线连接用户名
+ACTIVEMQ_USERNAME: SOC
+#总线连接密码
+ACTIVEMQ_PASSWORD: ZxwTz9F1xxoWAJWE/mjfpA==
+#总线连接证书
+ACTIVEMQ_SERVER_TRUSTSTORE: config/jmq/cert/mq-key.keystore
+#总线连接证书
+ACTIVEMQ_SERVER_KEYSTORE: config/jmq/cert/mq-key.keystore
+#总线连接证书密码
+ACTIVEMQ_SERVER_KEYSTORE_PASSWORD: ZxwTz9F1xxoWAJWE/mjfpA==
+#总线连接证书密码
+ACTIVEMQ_SERVER_TRUSTSTORE_PASSWORD: ZxwTz9F1xxoWAJWE/mjfpA==
+ACTIVEMQ_SERVER_KEYSTORETYPE: JKS
+#接收超时 120s
+ACTIVEMQ_RECIEVE_TIMEOUT: 120000
+#MONITOR_INTERVAL=300
+#FILE_BUFFER_SIZE=512000
+#ACTIVEMQ_SERVER_NUM =1

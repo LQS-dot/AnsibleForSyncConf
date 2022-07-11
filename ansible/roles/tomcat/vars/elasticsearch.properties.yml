@@ -1,0 +1,24 @@
+# File Path
+elasticsearch_properties: /opt/smc/web/tomcat/webapps/SMC/WEB-INF/classes/config/elasticsearch/elasticsearch.properties
+elasticsearch_properties_yml: /etc/ansible/roles/tomcat/vars/elasticsearch.properties.yml
+#es的主机地址，集群时填写所有的主机地址，以英文逗号分隔
+es_host: '{{ IPADDR }}'
+#es的服务端口，默认9300
+es_port: 9300
+#es的集群名称
+es_cluster_name: cluster1609146278
+#单线程批次提交的事件数量
+es_bulkActions: 1000
+#当提交的事件大小达到配置时，触发服务器的flush操作，与下面的刷新时间同时起作用，谁先满足谁触发，单位：MB
+es_bulkSize: 1024
+#当时间间隔达到配置时，触发服务器的fulsh操作，单位：秒
+es_flushInterval: 60
+#提交事件的线程数
+es_concurrentRequests: 4
+#保持最近多少天的索引库始终处于开启状态
+es_holdOpenIndexSize: 14
+#索引库的备份因子数量
+es_index_number_of_replicas: 0
+log_baseDir: /opt/smc/storage/data
+# 数据字典配置文件路径
+dictionary_config_path: /opt/smc/eventmonitor/config/dictionary.ini

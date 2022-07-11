@@ -1,0 +1,40 @@
+# File Path
+db_properties: /opt/smc/web/tomcat/webapps/SMC/WEB-INF/classes/config/db/db.properties
+db_properties_yml: /etc/ansible/roles/tomcat/vars/db.properties.yml
+#数据库连接参数配置文件
+#驱动名称
+DRIVER: com.mysql.jdbc.Driver12
+#连接URL 192.168.100.174
+URL: jdbc:mysql://{{ IPADDR }}:3306/SMC?useUnicode=true&characterEncoding=UTF-8&zeroDateTimeBehavior=convertToNull
+#URL=jdbc:mysql://127.0.0.1:3306/SMC?useUnicode=true&characterEncoding=UTF-8&zeroDateTimeBehavior=convertToNull 
+#用户名
+#USERNAME=root
+USERNAME: smc 
+#密码
+PASSWORD: AgICqEpfXK2dWGMEBYv/PPLyXUZ8BgcI
+#初始化连接数
+INITIALSIZE: 20
+#最大连接数
+MAXACTIVE: 1000
+#最大空闲连接
+MAXIDLE: 50
+#最小空闲连接
+MINIDLE: 10
+#是否在自动回收超时连接的时候打印连接的超时错误
+LOGABANDONED: true
+#是否自动回收超时连接
+REMOVEABANDONED: true
+#超时时间(以s为单位)
+REMOVEABANDONEDTIMEOUT: 1200
+#超时等待时间（以ms为单位）
+MAXWAIT: 2000
+#测试语句
+VALIDATIONQUERY: SELECT 1
+#testOnBorrow
+TESTONBORROW: true
+#testOnReturn
+TESTONRETURN: true
+#testWhileIdle
+TESTWHILEIDLE: true
+
+

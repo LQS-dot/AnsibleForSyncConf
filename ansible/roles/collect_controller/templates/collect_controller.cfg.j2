@@ -1,0 +1,40 @@
+CompName={{CompName}}
+CompFlag={{CompFlag}}
+LocalAddr={{LocalAddr}}
+#windows下使用
+NetSegment={{NetSegment}}
+
+#数据监听端口
+DataListenPort={{DataListenPort}}
+#控制监听端口
+CmdListenPort={{CmdListenPort}}
+
+#DataAnalyser所在地址
+DataServer={{DataServer}}
+#DataAnalyser所监听的数据端口
+DataPort={{DataPort}}
+
+#BusinessManager所在地址
+ControlServer={{ControlServer}}
+#BusinessManager所监听的控制端口
+ControlPort={{ControlPort}}
+
+#日志配置
+LogMask={{LogMask}}
+#单个日志文件最大限制，单位M
+MaxLogFileSize={{MaxLogFileSize}}
+LogQueueMask={{LogQueueMask}}
+
+#证书配置，证书路径结尾必须带/
+{% if SSL %}
+SSL=true
+{% else %}
+SSL=false
+{% endif %}
+SSLPath={{SSLPath}}
+SSLCaFile={{SSLCaFile}}
+SSLKeyFile={{SSLKeyFile}}
+SSLPasswd={{SSLPasswd}}
+
+#监控框架类型,0:monitor 1:urm
+MonitorType={{MonitorType}}

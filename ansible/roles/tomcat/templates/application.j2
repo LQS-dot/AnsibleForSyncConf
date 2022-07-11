@@ -1,0 +1,205 @@
+# 服务配置
+server:
+  port: 8443
+  ssl:
+    enabled: true
+    ciphers: {{server.ssl.ciphers}}
+    sslEnabledProtocols: TLSv1.2,TLSv1.3
+    key-store: classpath:keystore/tomcat.keystore
+    key-store-password: {{server.ssl.key_store_password}}
+
+# 项目配置
+project-config:
+  project-name: BDSEC
+  session-timeout: 30m
+
+# 框架配置
+spring:
+  # dev|sit|uat|prod,这个可以配置一个环境变量，跟着不同的情况来切换本地和现场的环境
+  profiles.active: dev
+
+  banner:
+    location: classpath:banner/logo.txt
+
+  # WEB资源配置
+  web:
+    resources:
+      cache:
+        period: 10s
+
+  # JSON配置
+  jackson:
+    time-zone: GMT+8
+    date-format: yyyy-MM-dd HH:mm:ss
+    serialization:
+      fail-on-empty-beans: false
+
+  # 文件上传
+  servlet.multipart:
+    max-file-size: 1GB
+    max-request-size: 1GB
+
+  # 国际化
+  messages:
+    basename: i18n/messages
+    cache-duration: 5m
+
+  # 定时任务
+  quartz:
+    startup-delay: 10s
+
+  # 数据源
+  datasource:
+    url: jdbc:mysql://127.0.0.1:3306/SMC?useUnicode=true&characterEncoding=UTF-8&useSSL=false
+    username: smc
+    password: {{spring.datasource.dbkeypassword}}
+    hikari:
+      connection-timeout: 30000  #连接超时 30s
+      validation-timeout: 5000  #连接验证超时 5s
+      idle-timeout: 300000    #连接最大空闲时间 5m
+      max-lifetime: 1800000   #连接最大生命周期 30m
+      maximum-pool-size: 20   #连接池大小
+      connection-test-query: SELECT 1
+
+  # ORM配置
+  jpa:
+    database: mysql
+    hibernate:
+      naming.physical-strategy: org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl  #驼峰映射
+      #ddl-auto: update
+    properties.database:
+      show_sql: false
+      format_sql: false
+      enable_lazy_load_no_trans: true
+    properties.hibernate:
+      session_factory.interceptor: com.juminfo.bdsec.config.jpa.interceptor.DataPermissionInterceptor
+
+  # ActiveMQ-SSL (拓展插件)
+  activemq-ssl:
+    enable: true
+    broker-url: ssl://127.0.0.1:61616?trace=true
+    verify-host-name: false
+    user: juminfo
+    password: JMDES(PbxuzY8NL2GY2d21FPQ9Sg==)
+    max-connections: 1
+    key-store: classpath:/keystore/activemq.keystore
+    trust-store: classpath:/keystore/activemq.keystore
+    key-store-password: JMDES(x1GzVGU23Vv9k1F6tXaecw==)
+    trust-store-password: JMDES(jHYCVRm7W8vcVyLy_AFDYQ==)
+
+  jms:
+    pub-sub-domain: true  # 模式：true:Topic / false:Queue
+    template:
+      receive-timeout: 2m
+      qos-enabled: true
+      delivery-mode: non_persistent
+
+  # 字符串日期格式映射
+  mvc:
+    format:
+      date: yyyy-MM-dd HH:mm:ss
+
+
+  # Elasticsearch
+  elasticsearch:
+    rest:
+      uris:
+        - 127.0.0.1:9200
+        # 集群模式在此处依次扩展
+      connection-timeout: 30s
+      read-timeout: 30s
+
+# Swagger
+springfox:
+  documentation:
+    enabled: false
+    swagger-ui.base-url: /swagger
+    swagger.v2.path: /swagger/v2/api-docs
+    open-api.v3.path: /swagger/v3/api-docs
+
+# 日志
+logging:
+  config: classpath:logging/logback-spring.xml
+  level:
+    sql: info
+    root: info
+    com.juminfo.bdsec: info
+    org.springframework.context.support.PostProcessorRegistrationDelegate: warn
+  group:
+    activemq: info
+
+# HTTP客户端 (拓展插件)
+http-client:
+  max-total: 500
+  socket-timeout: 1m
+  connect-timeout: 30s
+  default-max-per-route: 100
+  connection-request-timeout: 30s
+
+# Mybatis配置
+mybatis:
+  mapperLocations: classpath:mapper/**/*.xml
+  type-handlers-package: com.juminfo.bdsec.config.mybatis
+  configuration:
+    map-underscore-to-camel-case: true
+    call-setters-on-nulls: true
+    cache-enabled: true
+    local-cache-scope: session
+
+#自定义属性示例 @Value("${xxx.xxx}")
+# Custom:
+#   task-timeout: 1h
+
+# es索引配置公共属性
+index:
+  number_of_shards: 1
+  number_of_replicas: 0
+  codec: best_compression
+  refresh_interval: 30s
+  search_max_day: 180
+  analysis:
+    analyzer:
+      default:
+        type: ik_max_word
+
+# 导出任务
+export_task:
+  base_path: /opt/data/exportFile
+  thread_pool: 2
+  storage_limit_gb: 50
+
+# 综合报告
+ssa_report:
+  base_path: /opt/data/ssaReport
+  thread_pool: 3
+  limit: #报告保留数量(-1无限)
+    day: 8
+    week: 4
+    month: 6
+    manual: 12
+
+# 登录
+login:
+  #密码找回间隔时长：密码找回成功后多久不能重复找回，单位：分钟，默认5分钟
+  retrieve_time: 5
+  validate_code:
+  #验证码刷新器执行周期表达式,默认一分钟执行一次,验证码缓存时间，单位:秒
+    refresh_time: 0 0/1 * * * ?
+    cache_time: 60
+    #图片宽，单位：px
+    width: 100
+    #图片高，单位：px
+    heigth: 30
+    #验证码字符个数
+    codeCount: 4
+    #干扰线条个数
+    lineCount: 4
+    #干扰文字个数
+    textCount: 2
+    #干扰文字
+    textJam: juminfo
+
+#报告预统计定时任务
+report:
+  #默认凌晨05分
+  pre_statistic: 0 5 0 * * ?

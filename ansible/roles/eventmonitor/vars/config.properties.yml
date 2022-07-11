@@ -1,0 +1,103 @@
+# File Path
+config_properties: /opt/smc/eventmonitor/config/config.properties
+config_properties_yml: /etc/ansible/roles/eventmonitor/vars/config.properties.yml
+
+#事件文件目录
+file_path: /dev/shm
+#配置文件路径
+config_path: /opt/smc/eventmonitor/config/
+#接收日志的类型，1：原始日志。 2：原始日志+日志关系
+receive_log_type: 2
+#接收日志的方式，1：仅文件方式。2：文件+SSLTCP 3：文件+TCP
+receive_way_type: 1
+#内存中缓存队列的大小
+cache_queue_size: 2000
+#根据设备资源情况限制30秒提交ES的数据上限
+batch_size: 150000
+#超时提交 单位：秒
+timeoutsubmit: 30
+#定时扫描日志文件间隔  单位：分钟
+intervalTime: 2
+#是否保留原始日志，0:em压缩, 1:filestore压缩, 2:不压缩直接删除
+holdOriginFile: 2
+#原始日志的备份路径
+file_bak_path: /opt/data/storage/data/backup
+#原始事件的索引类型，0：不索引， 1：默认索引，此配置项用于出厂设置的场景，针对需要查询原始事件且对硬盘和CPU能力提供比较足的厂商开启
+msgIndexType: 1
+#转化原始日志的线程数
+convertThreadCount: 1
+#是否开启补充用户信息，根据IP获取用户信息 0：SAM开启，1：不开启, 2:SMP开启
+fillAccountFlag: 1
+#SAM字节读取长度版本标记      1：非集美   2：集美
+samClientVersion: 2
+#SMP的地址
+smpAddress:
+#SMP的端口
+smpPort: 10001
+#es的主机地址，集群时填写所有的主机地址，以英文逗号分隔
+#es_host: 127_0_0_1
+#es的服务端口，默认9300
+#es_port: 9300
+#socket服务接收原始日志的端口
+origin_log_receive_port: 19003
+#socket服务接收关系日志的端口
+relat_log_receive_port: 19004
+#es的集群名称
+#es_cluster_name: defaultcluster
+#单线程批次提交的事件数量
+es_bulkActions: 10000
+#当提交的事件大小达到配置时，触发服务器的flush操作，与下面的刷新时间同时起作用，谁先满足谁触发，单位：MB
+es_bulkSize: 1024
+#当时间间隔达到配置时，触发服务器的fulsh操作，单位：秒
+es_flushInterval: 60
+#提交事件的线程数
+es_concurrentRequests: 1
+#索引模板的shards大小
+es_template_setting_shards: 1
+#单个索引库的存储大小，单位MB
+es_index_maxSize: 16000
+#接收的原始事件的字段，加密字段sign暂时不用
+origin_log_field: eventID,securityObjectID,securityObjectIP,eventName,internalCode,message,severity,category,subcategory,originSeverity,deviceType,deviceInfo,deviceAddress,deviceName,productName,productVersion,receiveTime,originTime,reliability,sourceAddress,sourceHostName,sourcePort,sourceMask,sourceUser,sourceMAC,sourceZone,destinationAddress,destinationHostName,destinationPort,destinationMask,destinationUser,destinationMAC,destinationZone,collectorID,collectorName,collectorAddress,networkID,networkName,sendFlow,sendFlowUnit,receiveFlow,receiveFlowUnit,totalFlow,totalFlowUnit,objectCategory,objectSubcategory,objectName,objectAddress,objectAccount,executionAccount,executionAddress,actionCategory,actionName,actionAddress,actionDetail,actionDuration,domainName,groupName,serviceName,otherAddress,otherPort,protocol,action,result,fileName,duration,count,session,stringUserData1,stringUserData2,stringUserData3,stringUserData4,stringUserData5,stringUserData6,stringUserData7,stringUserData8,stringUserData9,stringUserData10,stringUserData11,stringUserData12,stringUserData13,stringUserData14,stringUserData15,stringUserData16,stringUserData17,stringUserData18,stringUserData19,stringUserData20,sourceISP,destinationISP,sourceOS,sourceBrowser,url,resultCode,referer,refererDomain,stringUserData21,stringUserData22,stringUserData23,stringUserData24,stringUserData25,stringUserData26,stringUserData27,stringUserData28,stringUserData29,stringUserData30,ruleType,appProtocol
+#接收的事件关系的字段
+relat_log_field: DataObjectID,DataObjectType,batchID,originID,receiveTime
+#只存储哪些字段，当该配置有值时，后面的那个配置无效
+es_store_field:
+#无需存储的字段
+es_unStore_field:
+#总线连接证书
+ACTIVEMQ_SERVER_TRUSTSTORE: ca.pem
+#总线连接证书
+ACTIVEMQ_SERVER_KEYSTORE: key.pem
+#总线连接证书密码
+ACTIVEMQ_SERVER_KEYSTORE_PASSWORD: AgICrvT4QgQFHAQXnwYHCA==
+#总线连接证书密码
+ACTIVEMQ_SERVER_TRUSTSTORE_PASSWORD: AgICrvT4QgQFHAQXnwYHCA==
+#单个索引库的存储大小，单位MB
+es_corr_index_maxSize: 7000
+#是否合并索引库 0:不合并  1:合并
+indexForceMerge: 0
+#日志来源类型  1:内存  2:IO
+log_source_type: 1
+#超限文件是否备份留存，0否1是
+overrun_files_bak_flag: 1
+#超限文件备份留存目录
+overrun_files_bak_path: /opt/data/storage/data/overFiledata/
+#超限文件备份个数
+overrun_files_bak_count: 1000
+#连接超时
+es_connect_timeout: 30
+#连接请求超时
+es_request_timeout: 30
+cluster_routing_allocation_disk_watermark_low: 91
+cluster_routing_allocation_disk_watermark_high: 95
+#允许创建的索引库数量
+cluster_max_shards_per_node: 50000
+#索引库滚动的doc数量限制
+es_index_max_docs: 40000000
+#索引库滚动的doc数量限制，单位G
+es_index_max_size: 8
+#socket超时时间，影响bulk提交的成功率
+es_socket_timeout: 5
+#es服务地址，多个逗号隔开
+es_host: '{{ IPADDR }}'
+es_cluster_name: cluster1657050376

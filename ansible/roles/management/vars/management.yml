@@ -1,0 +1,31 @@
+# management path
+management_ini: /opt/smc/hardware/conf/management.ini
+management_yml: /etc/ansible/roles/management/vars/management.yml
+
+# network config
+alert_limit: 80
+bk_index: 0
+bk_mode: none
+bk_type: auto
+checkRefererFlag: 0
+cli_dft: AgICVTeSuv7dw50EBYs3G+3lWuwjBgcI
+cli_pwd: AgICLkbWzs3hOSUEBeuwN8eHP5ZyBgcI
+cli_usr: smccli
+gui_dft: AgICK5OWTQQFDWNJ/gYHCA==
+gui_pwd:
+gui_usr: admin
+keep_length: 6
+keep_unit: mon
+remote_ip:
+remote_path:
+remote_pwd:
+remote_usr:
+sys_flag: 0
+syslogPort1:
+syslogPort2:
+web_dft: 21232f297a57a5a743894a0e4a801fc3
+managerInterface: eth0
+manufacturer: jm
+SMCVersion:
+whiteReferer:
+os:

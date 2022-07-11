@@ -1,0 +1,35 @@
+# File Path
+file_store_cfg: /opt/smc/storage/conf/file_store.cfg
+file_store_cfg_yml: /etc/ansible/roles/file_store/vars/file_store.cfg.yml
+
+CompName: file_store
+CompFlag: file_store
+LocalAddr: 127.0.0.1
+CLIENT: 0.0.0.0
+DATA_PATH: /opt/data/storage/data/
+PORT: 17001
+KEEP_DAYS: 180
+
+#BDLOG版数据分析器地址中转心跳数据
+AnalyzerIP:
+AnalyzerPort:
+
+#日志配置
+LogMask: 3
+MaxLogFileSize: 50000
+LogQueueMask: 3
+
+#证书配置，证书路径结尾必须带/
+SSL: false
+SSLPath: /opt/smc/cert/
+SSLCaFile: ca.pem
+SSLKeyFile: key.pem
+SSLPasswd: AgICrvT4QgQFHAQXnwYHCA==
+
+INIT_FLAG: True
+LOG_BACKUP: True
+
+StoreType: 1
+
+#监控框架类型,0:monitor 1:urm
+MonitorType: 0

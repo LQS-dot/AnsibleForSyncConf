@@ -1,0 +1,6 @@
+---
+- name: restart smcmonitor
+  service:
+    name: smcmonitor 
+    state: restarted
+  when: restart == true

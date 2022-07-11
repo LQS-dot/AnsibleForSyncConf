@@ -1,0 +1,18 @@
+# config.properties conf
+- name: config.properties conf
+  template:
+    src: config.properties.j2
+    dest: '{{ config_properties }}'
+    owner: smc
+  tags: config_properties
+  notify: restart smcem
+
+# jmq.properties conf
+- name: jmq.properties conf
+  template:
+    src: jmq.properties.j2
+    dest: '{{ jmq_properties }}'
+    owner: smc
+  tags: jmq_properties
+  notify: restart smcem
+

@@ -1,0 +1,6 @@
+---
+- name: restart smckernel
+  service:
+    name: smcbusiness_manager
+    state: restarted
+  when: restart == true

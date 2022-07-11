@@ -1,0 +1,4 @@
+# modify hostname
+- name: modify hostname
+  hostname:
+    name: "{{ value }}"

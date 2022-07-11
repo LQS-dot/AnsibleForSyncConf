@@ -1,0 +1,9 @@
+# elasticsearch.yml conf
+- name: elasticsearch.yml conf
+  template:
+    src: elasticsearch.yml.j2
+    dest: '{{ elasticsearch_config }}'
+    owner: smc
+  tags: elasticsearch
+  notify: restart elasticsearch
+

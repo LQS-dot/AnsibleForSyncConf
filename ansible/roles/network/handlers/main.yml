@@ -1,0 +1,15 @@
+---
+- name: restart network
+  shell: bash -c "nmcli --terse --fields UUID,AUTOCONNECT con show | awk -F"{{ ":" }}" '\$2~yes {print \$1}' | xargs -n1 -I{} bash -c 'timeout 10 nmcli con down {};timeout 10 nmcli con up {}' || :"
+  when: restart == true
+
+- name: restart network1
+  service:
+    name: NetworkManager
+    state: restarted
+  when: restart == true
+
+- name: restart network2
+  shell: bash -c "nmcli d reapply {{ ifname }}"
+  when: restart == true
+

@@ -1,0 +1,9 @@
+# smc_monitor.cfg conf
+- name: smc_monitor.cfg conf
+  template:
+    src: smc_monitor.cfg.j2
+    dest: '{{ smc_monitor_cfg }}'
+    owner: smc
+  tags: smc_monitor
+  notify: restart smcmonitor
+

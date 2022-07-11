@@ -1,0 +1,56 @@
+CompName={{CompName}}
+CompFlag={{CompFlag}}
+LocalAddr={{LocalAddr}}
+#采集控制器数据端口
+DataPort={{DataPort}}
+#采集控制器命令端口
+CmdPort={{CmdPort}}
+#日志配置
+LogMask={{LogMask}}
+#单个日志文件最大限制，单位M
+MaxLogFileSize={{MaxLogFileSize}}
+LogQueueMask={{LogQueueMask}}
+
+#SMB用户定义文件名
+SMB_INCEPT_FILE={{SMB_INCEPT_FILE}}
+#syslog接入端口
+SYSLOG_PORT={{SYSLOG_PORT}}
+#原始事件落地配置
+DUMP_UNKNOWN={{DUMP_UNKNOWN}}
+DO_DUMP={{DO_DUMP}}
+DUMP_IP={{DUMP_IP}}
+DUMP_COUNT={{DUMP_COUNT}}
+DUMP_PAUSE={{DUMP_PAUSE}}
+
+#数据负载均衡
+OWN_BALANCE={{OWN_BALANCE}}
+BALANCE_CLIENT={{BALANCE_CLIENT}}
+#性能超载转通用事件
+OUTLOAD_EVT={{OUTLOAD_EVT}}
+#智能排序开关
+PATTERNSORT={{PATTERNSORT}}
+#智能排序学习时间
+FIRST_LEARNING={{FIRST_LEARNING}}
+#智能排序刷新周期
+PATTERN_SORT_PERIOD={{PATTERN_SORT_PERIOD}}
+#解析线程数
+PARSE_THREADS={{PARSE_THREADS}}
+#过滤线程数
+FM_POOL={{FM_POOL}}
+#kafka速率控制
+KAFKA_SLEEP_US={{KAFKA_SLEEP_US}}
+
+{% if SSL %}
+SSL=true
+{% else %}
+SSL=false
+{% endif %}
+SSLPath={{SSLPath}}
+SSLCaFile={{SSLCaFile}}
+SSLKeyFile={{SSLKeyFile}}
+SSLPasswd={{SSLPasswd}}
+
+INCEPT_THREADS={{INCEPT_THREADS}}
+
+#监控框架类型,0:monitor 1:urm
+MonitorType={{MonitorType}}

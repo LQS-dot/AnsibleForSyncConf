@@ -1,0 +1,12 @@
+# management path
+default_ini: /opt/smc/hardware/conf/default.ini
+default_yml: /etc/ansible/roles/management/vars/default.yml
+
+# default config
+ipaddr: 192.168.0.100
+mask: 255.255.255.0
+gw: 192.168.0.1
+dns: 8.8.8.8 
+hostname_platform: System 
+hostname_collector: System-Collector
+tz: Asia/Shanghai

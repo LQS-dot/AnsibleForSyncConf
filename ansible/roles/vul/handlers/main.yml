@@ -1,0 +1,6 @@
+---
+- name: restart smcscan
+  service:
+    name: smcscannerd
+    state: restarted
+  when: restart == true

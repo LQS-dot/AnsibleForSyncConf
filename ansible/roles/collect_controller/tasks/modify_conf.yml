@@ -1,0 +1,20 @@
+# modify collect_controller.cfg conf
+- name: modify collect_controller.cfg conf
+  lineinfile:
+    path: "{{ collect_controller_cfg_yml }}"
+    regexp: "^{{ key }}:"
+    line: "{{ key }}: {{ value }}"
+    backrefs: yes
+  tags: collect_controller
+  notify: restart smccollector
+  when: key != "temp_k" and key != IPADDR
+
+# modify /etc/ansible/hosts
+- name: modify /etc/ansible/hosts
+  lineinfile:
+    path: "/etc/ansible/hosts"
+    regexp: "IPADDR"
+    line: "IPADDR={{ IPADDR }}"
+    backrefs: yes
+  tags: ansible_hosts
+

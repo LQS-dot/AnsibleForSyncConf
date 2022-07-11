@@ -1,0 +1,209 @@
+# File Path
+app_properties: /opt/smc/web/bdsec/resources/application.yml 
+app_properties_yml: /etc/ansible/roles/tomcat/vars/application.yml 
+
+# 服务配置
+server:
+  port: 8443
+  ssl:
+    enabled: true
+    ciphers: TLS_RSA_WITH_AES_256_CBC_SHA,TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256,TLS_RSA_WITH_AES_128_CBC_SHA256,TLS_RSA_WITH_AES_256_CBC_SHA256
+    sslEnabledProtocols: TLSv1.2,TLSv1.3
+    key_store: classpath:keystore/tomcat.keystore
+    key_store_password: JMDES(AgIChXFFkC1EDjYEBdUla8yFsTW4BgcI)
+
+# 项目配置
+project_config:
+  project_name: BDSEC
+  session_timeout: 30m
+
+# 框架配置
+spring:
+  # dev|sit|uat|prod,这个可以配置一个环境变量，跟着不同的情况来切换本地和现场的环境
+  profiles_active: dev
+
+  banner:
+    location: classpath:banner/logo.txt
+
+  # WEB资源配置
+  web:
+    resources:
+      cache:
+        period: 10s
+
+  # JSON配置
+  jackson:
+    time_zone: GMT+8
+    date_format: yyyy-MM-dd HH:mm:ss
+    serialization:
+      fail_on_empty_beans: false
+
+  # 文件上传
+  servlet_multipart:
+    max_file_size: 1GB
+    max_request_size: 1GB
+
+  # 国际化
+  messages:
+    basename: i18n/messages
+    cache_duration: 5m
+
+  # 定时任务
+  quartz:
+    startup_delay: 10s
+
+  # 数据源
+  datasource:
+    url: jdbc:mysql://127.0.0.1:3306/SMC?useUnicode=true&characterEncoding=UTF-8&useSSL=false
+    username: smc
+    dbkeypassword: JMDES(AgIChXFFkC1EDjYEBdUla8yFsTW4BgcI)
+    hikari:
+      connection_timeout: 30000  #连接超时 30s
+      validation_timeout: 5000  #连接验证超时 5s
+      idle_timeout: 300000    #连接最大空闲时间 5m
+      max_lifetime: 1800000   #连接最大生命周期 30m
+      maximum_pool_size: 20   #连接池大小
+      connection_test_query: SELECT 1
+
+  # ORM配置
+  jpa:
+    database: mysql
+    hibernate:
+      naming_physical_strategy: org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl  #驼峰映射
+      #ddl-auto: update
+    properties_database:
+      show_sql: false
+      format_sql: false
+      enable_lazy_load_no_trans: true
+    properties.hibernate:
+      session_factory.interceptor: com.juminfo.bdsec.config.jpa.interceptor.DataPermissionInterceptor
+
+  # ActiveMQ-SSL (拓展插件)
+  activemq_ssl:
+    enable: true
+    broker_url: ssl://127.0.0.1:61616?trace=true
+    verify_host_name: false
+    user: juminfo
+    amqpassword: JMDES(PbxuzY8NL2GY2d21FPQ9Sg==)
+    max_connections: 1
+    key_store: classpath:/keystore/activemq.keystore
+    trust_store: classpath:/keystore/activemq.keystore
+    key_store_password: JMDES(x1GzVGU23Vv9k1F6tXaecw==)
+    trust_store_password: JMDES(jHYCVRm7W8vcVyLy_AFDYQ==)
+
+  jms:
+    pub_sub_domain: true  # 模式：true:Topic / false:Queue
+    template:
+      receive_timeout: 2m
+      qos_enabled: true
+      delivery_mode: non_persistent
+
+  # 字符串日期格式映射
+  mvc:
+    format:
+      date: yyyy-MM-dd HH:mm:ss
+
+
+  # Elasticsearch
+  elasticsearch:
+    rest:
+      uris:
+         #'{{ IPADDR }}':9200
+        # 集群模式在此处依次扩展
+      connection_timeout: 30s
+      read_timeout: 30s
+
+# Swagger
+springfox:
+  documentation:
+    enabled: false
+    swagger_ui_base_url: /swagger
+    swagger_v2_path: /swagger/v2/api-docs
+    open_api_v3_path: /swagger/v3/api-docs
+
+# 日志
+logging:
+  config: classpath:logging/logback-spring.xml
+  level:
+    sql: info
+    root: info
+    com_juminfo_bdsec: info
+    org_springframework_context_support_PostProcessorRegistrationDelegate: warn
+  group:
+    activemq: info
+
+# HTTP客户端 (拓展插件)
+http_client:
+  max_total: 500
+  socket_timeout: 1m
+  connect_timeout: 30s
+  default_max_per_route: 100
+  connection_request_timeout: 30s
+
+# Mybatis配置
+mybatis:
+  mapperLocations: classpath:mapper/**/*.xml
+  type_handlers_package: com.juminfo.bdsec.config.mybatis
+  configuration:
+    map_underscore_to_camel_case: true
+    call_setters_on_nulls: true
+    cache_enabled: true
+    local_cache_scope: session
+
+#自定义属性示例 @Value("${xxx.xxx}")
+# Custom:
+#   task-timeout: 1h
+
+# es索引配置公共属性
+index:
+  number_of_shards: 1
+  number_of_replicas: 0
+  codec: best_compression
+  refresh_interval: 30s
+  search_max_day: 180
+  analysis:
+    analyzer:
+      default:
+        type: ik_max_word
+
+# 导出任务
+export_task:
+  base_path: /opt/data/exportFile
+  thread_pool: 2
+  storage_limit_gb: 50
+
+# 综合报告
+ssa_report:
+  base_path: /opt/data/ssaReport
+  thread_pool: 3
+  limit: #报告保留数量(-1无限)
+    day: 8
+    week: 4
+    month: 6
+    manual: 12
+
+# 登录
+login:
+  #密码找回间隔时长：密码找回成功后多久不能重复找回，单位：分钟，默认5分钟
+  retrieve_time: 5
+  validate_code:
+    #验证码刷新器执行周期表达式,默认一分钟执行一次,验证码缓存时间，单位:秒
+    refresh_time: 0 0/1 * * * ?
+    cache_time: 60
+    #图片宽，单位：px
+    width: 100
+    #图片高，单位：px
+    heigth: 30
+    #验证码字符个数
+    codeCount: 4
+    #干扰线条个数
+    lineCount: 4
+    #干扰文字个数
+    textCount: 2
+    #干扰文字
+    textJam: juminfo
+
+#报告预统计定时任务
+report:
+  #默认凌晨05分
+  pre_statistic: 0 5 0 * * ?

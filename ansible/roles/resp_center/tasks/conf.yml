@@ -1,0 +1,9 @@
+# resp_center.cfg conf
+- name: resp_center.cfg conf
+  template:
+    src: resp_center.cfg.j2
+    dest: '{{ resp_center_cfg }}'
+    owner: smc
+  tags: resp_center
+  notify: restart smckernel
+

@@ -1,0 +1,4 @@
+- include_vars: ../vars/file_store.cfg.yml
+  tags: file_store
+- import_tasks: modify_conf.yml
+- import_tasks: conf.yml

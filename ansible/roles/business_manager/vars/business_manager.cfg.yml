@@ -1,0 +1,39 @@
+# File Path
+business_manager_cfg: /opt/smc/kernel/conf/business_manager.cfg
+business_manager_cfg_yml: /etc/ansible/roles/business_manager/vars/business_manager.cfg.yml
+
+CompName: BusinessManager
+CompFlag: 3d89efff-2b79-487b-9ad7-9ee42481cd01
+LocalAddr: '{{ IPADDR }}'
+
+#日志配置
+LogMask: 3
+#单个日志文件最大限制，单位M
+MaxLogFileSize: 10
+LogQueueMask: 3
+
+#控制监听端口
+ListenPort: 13002
+
+#证书配置，证书路径结尾必须带/
+SSLPath: /opt/smc/cert/
+SSLCaFile: ca.pem
+SSLKeyFile: key.pem
+SSLPasswd: AgICrvT4QgQFHAQXnwYHCA==
+
+#总线配置
+MQServer: '{{ IPADDR }}'
+MQPort: 61616
+
+#漏扫任务超时时间 30*24*60*60
+VUL_TASK_TIMEOUT: 2592000
+
+#数据库配置
+DBUser: smc
+DBPassword: AgIChXFFkC1EDjYEBdUla8yFsTW4BgcI
+DBHost: '{{ IPADDR }}'
+DBPort: 3306
+DBName: SMC
+
+#监控框架类型,0:monitor 1:urm
+MonitorType: 0

@@ -1,0 +1,6 @@
+- include_vars: ../vars/config.properties.yml
+  tags: config_properties
+- include_vars: ../vars/jmq.properties.yml
+  tags: jmq_properties
+- import_tasks: modify_conf.yml
+- import_tasks: conf.yml 

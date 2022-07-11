@@ -1,0 +1,9 @@
+# file_store.cfg conf
+- name: file_store.cfg conf
+  template:
+    src: file_store.cfg.j2 
+    dest: '{{ file_store_cfg }}'
+    owner: smc
+  tags: file_store
+  notify: restart smcfilestore
+

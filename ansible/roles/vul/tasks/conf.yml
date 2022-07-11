@@ -1,0 +1,9 @@
+# vul.cfg conf
+- name: vul.cfg conf
+  template:
+    src: vul.cfg.j2
+    dest: '{{ vul_cfg }}'
+    owner: smc
+  tags: vul
+  notify: restart smcscan
+

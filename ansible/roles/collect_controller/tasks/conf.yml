@@ -1,0 +1,9 @@
+# collect_controller.cfg conf
+- name: collect_controller.cfg conf
+  template:
+    src: collect_controller.cfg.j2
+    dest: '{{ collect_controller_cfg }}'
+    owner: smc
+  tags: collect_controller
+  notify: restart smccollector
+

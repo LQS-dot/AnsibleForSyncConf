@@ -1,0 +1,101 @@
+#事件文件目录
+file.path={{file_path}}
+#配置文件路径
+config.path={{config_path}}
+#接收日志的类型，1：原始日志。 2：原始日志+日志关系
+receive.log.type={{receive_log_type}}
+#接收日志的方式，1：仅文件方式。2：文件+SSLTCP 3：文件+TCP
+receive.way.type={{receive_way_type}}
+#内存中缓存队列的大小
+cache.queue.size={{cache_queue_size}}
+#根据设备资源情况限制30秒提交ES的数据上限
+batch.size={{batch_size}}
+#超时提交 单位：秒
+timeoutsubmit={{timeoutsubmit}}
+#定时扫描日志文件间隔  单位：分钟
+intervalTime={{intervalTime}}
+#是否保留原始日志，0:em压缩, 1:filestore压缩, 2:不压缩直接删除
+holdOriginFile={{holdOriginFile}}
+#原始日志的备份路径
+file.bak.path={{file_bak_path}}
+#原始事件的索引类型，0：不索引， 1：默认索引，此配置项用于出厂设置的场景，针对需要查询原始事件且对硬盘和CPU能力提供比较足的厂商开启
+msgIndexType={{msgIndexType}}
+#转化原始日志的线程数
+convertThreadCount={{convertThreadCount}}
+#是否开启补充用户信息，根据IP获取用户信息 0：SAM开启，1：不开启, 2:SMP开启
+fillAccountFlag={{fillAccountFlag}}
+#SAM字节读取长度版本标记      1：非集美   2：集美
+samClientVersion={{samClientVersion}}
+#SMP的地址
+smpAddress={{smpAddress}}
+#SMP的端口
+smpPort={{smpPort}}
+#es的主机地址，集群时填写所有的主机地址，以英文逗号分隔
+#es.host: 127.0.0.1
+#es的服务端口，默认9300
+#es.port: 9300
+#socket服务接收原始日志的端口
+origin.log.receive.port={{origin_log_receive_port}}
+#socket服务接收关系日志的端口
+relat.log.receive.port={{relat_log_receive_port}}
+#es的集群名称
+#es.cluster.name: defaultcluster
+#单线程批次提交的事件数量
+es.bulkActions={{es_bulkActions}}
+#当提交的事件大小达到配置时，触发服务器的flush操作，与下面的刷新时间同时起作用，谁先满足谁触发，单位：MB
+es.bulkSize={{es_bulkSize}}
+#当时间间隔达到配置时，触发服务器的fulsh操作，单位：秒
+es.flushInterval={{es_flushInterval}}
+#提交事件的线程数
+es.concurrentRequests={{es_concurrentRequests}}
+#索引模板的shards大小
+es.template.setting.shards={{es_template_setting_shards}}
+#单个索引库的存储大小，单位MB
+es.index.maxSize={{es_index_maxSize}}
+#接收的原始事件的字段，加密字段sign暂时不用
+origin.log.field={{origin_log_field}}
+#接收的事件关系的字段
+relat.log.field={{relat_log_field}}
+#只存储哪些字段，当该配置有值时，后面的那个配置无效
+es.store.field={{es_store_field}}
+#无需存储的字段
+es.unStore.field={{es_unStore_field}}
+#总线连接证书
+ACTIVEMQ_SERVER_TRUSTSTORE={{ACTIVEMQ_SERVER_TRUSTSTORE}}
+#总线连接证书
+ACTIVEMQ_SERVER_KEYSTORE={{ACTIVEMQ_SERVER_KEYSTORE}}
+#总线连接证书密码
+ACTIVEMQ_SERVER_KEYSTORE_PASSWORD={{ACTIVEMQ_SERVER_KEYSTORE_PASSWORD}}
+#总线连接证书密码
+ACTIVEMQ_SERVER_TRUSTSTORE_PASSWORD={{ACTIVEMQ_SERVER_TRUSTSTORE_PASSWORD}}
+#单个索引库的存储大小，单位MB
+es.corr.index.maxSize={{es_corr_index_maxSize}}
+#是否合并索引库 0:不合并  1:合并
+indexForceMerge={{indexForceMerge}}
+#日志来源类型  1:内存  2:IO
+log.source.type={{log_source_type}}
+#超限文件是否备份留存，0否1是
+overrun.files.bak.flag={{overrun_files_bak_flag}}
+#超限文件备份留存目录
+overrun.files.bak.path={{overrun_files_bak_path}}
+#超限文件备份个数
+overrun.files.bak.count={{overrun_files_bak_count}}
+#连接超时
+es.connect.timeout={{es_connect_timeout}}
+#连接请求超时
+es.request.timeout={{es_request_timeout}}
+cluster.routing.allocation.disk.watermark.low={{cluster_routing_allocation_disk_watermark_low}}
+cluster.routing.allocation.disk.watermark.high={{cluster_routing_allocation_disk_watermark_high}}
+#允许创建的索引库数量
+cluster.max_shards_per_node={{cluster_max_shards_per_node}}
+#索引库滚动的doc数量限制
+es.index.max.docs={{es_index_max_docs}}
+#索引库滚动的doc数量限制，单位G
+es.index.max.size={{es_index_max_size}}
+#socket超时时间，影响bulk提交的成功率
+es.socket.timeout={{es_socket_timeout}}
+#es服务地址，多个逗号隔开
+es_host={{es_host}}
+
+#es默认端口
+es_port=9200

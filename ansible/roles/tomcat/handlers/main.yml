@@ -1,0 +1,6 @@
+---
+- name: restart smcweb
+  service:
+    name: smctomcat
+    state: restarted
+  when: restart == true

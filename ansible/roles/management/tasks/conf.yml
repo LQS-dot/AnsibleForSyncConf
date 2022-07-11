@@ -1,0 +1,16 @@
+# management conf
+- name: template conf
+  template:
+    src: management.j2
+    dest: '{{ management_ini }}'
+    owner: smc
+  tags: management
+
+# default conf
+- name: default conf
+  template:
+    src: default.j2
+    dest: "{{ default_ini }}"
+    owner: smc
+  tags: default
+

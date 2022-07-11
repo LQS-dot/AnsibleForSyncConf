@@ -1,0 +1,6 @@
+---
+- name: restart smccollector
+  service:
+    name: smccollector
+    state: restarted
+  when: restart == true
